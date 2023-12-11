@@ -1,0 +1,16 @@
+{
+  "hash": "f888bf294a7e1180913833299137c5c0",
+  "result": {
+    "markdown": "---\ntitle: \"TidyTuesday: Retail Sales data analysis with Plotly in R\"\ndate: 01-2-2023 \nauthor: Surya Vardhan \ncategories: [code, analysis, visualization, plotly, plot]\nimage: \"b.jpg\"\n---\n\n\nIn this post, I will analyse the mtcars dataset about Retail Sales ...\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Load the mtcars dataset (if not already loaded)\ndata(mtcars)\n\n# Calculate the total sales (number of cars) for each model\nsales_data <- table(mtcars$mpg)\n\n# Create a bar graph\nbarplot(sales_data, \n        main = \"Sales of Cars (mtcars)\",\n        xlab = \"Miles per Gallon (mpg)\",\n        ylab = \"Number of Cars\",\n        col = \"skyblue\",\n        border = \"black\",\n        names.arg = sort(unique(mtcars$mpg)),\n        cex.names = 0.7\n)\n\n# Add a legend\nlegend(\"topright\", legend = \"Car Models\", fill = \"skyblue\", border = \"black\")\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

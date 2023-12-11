@@ -1,0 +1,6 @@
+"0",""
+"0","max_experience %>%"
+"0","  kable() %>%"
+"0","  kable_styling(bootstrap_options = ""striped"") %>%"
+"0","  row_spec(which(1:nrow(max_experience) %% 2 == 0), background = ""#F2F2F2"") %>%"
+"0","  row_spec(which(1:nrow(max_experience) %% 2 != 0), background = ""#D9EAD3"")"

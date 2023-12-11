@@ -1,0 +1,6 @@
+"0",""
+"0","ggplot(NFLX4, aes(x = past_accuracy, y = ACTUAL)) +"
+"0","  geom_point(color = ""#41b6c4"", shape = 20, size = 3) +"
+"0","  ggtitle(""ACTUAL vs. past_accuracy"") +"
+"0","  xlab(""past_accuracy"") +"
+"0","  ylab(""ACTUAL"")"

@@ -1,0 +1,3046 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Uday Sashank Kanapala">
+<meta name="dcterms.date" content="2023-03-02">
+
+<title>Uday Sashank Kanapala - General R knowledge</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/uday.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Uday Sashank Kanapala</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html" rel="" target="">
+ <span class="menu-text">Resume</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">General R knowledge</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">analysis</div>
+                <div class="quarto-category">visualization</div>
+                <div class="quarto-category">plotly</div>
+                <div class="quarto-category">data anlysis</div>
+                <div class="quarto-category">R</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Uday Sashank Kanapala </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 2, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="business-problem" class="level1">
+<h1>Business Problem</h1>
+<p>In this group project, you will work with analysts’ forecast data of earning per share (EPS) provided by Wharton Research Data Services (WRDS). Institutional Brokers’ Estimate System (I/B/E/S) provides historical data on certain financial indicators collected from thousands of individual analysts working in more than 3,000 broker houses.</p>
+<ul>
+<li><p><strong>TICKER:</strong> A unique identifier assigned to each security. In this group project, you will only model “NFLX” ticker.</p></li>
+<li><p><strong>CNAME:</strong> Company name</p></li>
+<li><p><strong>ACTDATS:</strong> The Activation date: It is the date when the analyst forecast became effective within the IBES database.</p></li>
+<li><p><strong>ESTIMATOR:</strong> Sellside institution (mostly broker house). It is just the broker.</p></li>
+<li><p><strong>ANALYS:</strong> The person who makes the forecast and work for sellside institution. Estimators and analysts are represented by codes to hide their real names.</p></li>
+<li><p><strong>FPI:</strong> Forecast Period Indicator: The forecasting period. 6: Next Fiscal Quarter 1: Next Fiscal Year</p></li>
+<li><p><strong>MEASURE</strong>: The variable being estimated. We have data for earning per share (EPS)</p></li>
+<li><p><strong>VALUE:</strong> The forecasted value of EPS</p></li>
+<li><p><strong>FPEDATS</strong>: The Forecast Period End Date: It is the ending date of the fiscal period to which the estimate applies. For the majority of companies, the FPEDATS date is December 31st of that year.</p></li>
+<li><p><strong>REVDATS:</strong> The Review Date: It is the most recent date on which IBES called the analyst and verified that particular estimate as still valid for that analyst. If an analyst confirms that a previous estimate is still valid, the original database record for that estimate is retained and only the REVDATS variable is updated. If an analyst changes their estimate for a given company, a new record is entered in the database with a new ANNDATS. The old record of the analyst (containing the previous estimate) is retained in the database.</p></li>
+<li><p><strong>REVTIMS</strong>: Time-stamp of REVDATS</p></li>
+<li><p><strong>ANNDATS</strong>: The Announce date: It is the date on which the analyst first made that particular estimate.</p></li>
+<li><p><strong>ANNTIMS</strong>: Time-stamp of ANNDATS</p></li>
+<li><p><strong>ACTUAL</strong>: The realized EPS, the true EPS value.</p></li>
+<li><p><strong>ANNDATS_ACT</strong>: The Announced date of Actual EPS: The actual EPS value is announced by the company at this date.</p></li>
+<li><p><strong>ANNTIMS_ACT</strong>: The time-stamp of ANNDATS_ACT</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'kableExtra'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    group_rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>corrplot 0.92 loaded</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'reshape2'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:tidyr':
+
+    smiths</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'data.table'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:reshape2':
+
+    dcast, melt</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:dplyr':
+
+    between, first, last</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'flextable'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:kableExtra':
+
+    as_image, footnote</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ lubridate 1.9.2     ✔ stringr   1.5.0
+✔ purrr     1.0.2     ✔ tibble    3.2.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ data.table::between()    masks dplyr::between()
+✖ purrr::compose()         masks flextable::compose()
+✖ dplyr::filter()          masks stats::filter()
+✖ data.table::first()      masks dplyr::first()
+✖ kableExtra::group_rows() masks dplyr::group_rows()
+✖ lubridate::hour()        masks data.table::hour()
+✖ lubridate::isoweek()     masks data.table::isoweek()
+✖ dplyr::lag()             masks stats::lag()
+✖ data.table::last()       masks dplyr::last()
+✖ lubridate::mday()        masks data.table::mday()
+✖ lubridate::minute()      masks data.table::minute()
+✖ lubridate::month()       masks data.table::month()
+✖ lubridate::quarter()     masks data.table::quarter()
+✖ lubridate::second()      masks data.table::second()
+✖ purrr::transpose()       masks data.table::transpose()
+✖ lubridate::wday()        masks data.table::wday()
+✖ lubridate::week()        masks data.table::week()
+✖ lubridate::yday()        masks data.table::yday()
+✖ lubridate::year()        masks data.table::year()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'gridExtra'
+
+The following object is masked from 'package:dplyr':
+
+    combine</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>NFLX <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/P/Downloads/USK/USK/usk/NFLX.csv"</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(NFLX)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "TICKER"      "CNAME"       "ACTDATS"     "ESTIMATOR"   "ANALYS"     
+ [6] "FPI"         "MEASURE"     "VALUE"       "FPEDATS"     "REVDATS"    
+[11] "REVTIMS"     "ANNDATS"     "ANNTIMS"     "ACTUAL"      "ANNDATS_ACT"
+[16] "ANNTIMS_ACT"</code></pre>
+</div>
+</div>
+<section id="how-to-read-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-read-the-data">How to read the data</h2>
+<p><strong>The first row in NFLX data set</strong>: On 09‐Aug-2002 (ANNDATS), analyst 6749 (ANALYS) at Estimator 1872 (ESTIMATOR) predicts that the EPS (MEASURE) for NETFLIX INC. (CNAME) with a ticker of NFLX (TICKER) with forecast period ending 30‐Sep-2002 (FPEDATS) is -$0.0086 (VALUE). This estimates was entered into the database on 12‐Aug-2002 (ACTDATS). On 17-Oct-2002 (ANNDATS_ACT), NETFLIX INC. announced an actual EPS of $7e-04 ($0.0007) (ACTUAL) for this quarter (FPI=6).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(NFLX,<span class="at">n=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  TICKER        CNAME  ACTDATS ESTIMATOR ANALYS FPI MEASURE   VALUE  FPEDATS
+1   NFLX NETFLIX INC. 20020812      1872   6749   6     EPS -0.0086 20020930
+   REVDATS  REVTIMS  ANNDATS  ANNTIMS ACTUAL ANNDATS_ACT ANNTIMS_ACT
+1 20021018 17:02:56 20020809 14:00:00 -7e-04    20021017    17:04:00</code></pre>
+</div>
+</div>
+</section>
+<section id="your-turn" class="level2">
+<h2 class="anchored" data-anchor-id="your-turn">Your Turn:</h2>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 1A: Calculate Missingness
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check to see the missing values in NFLX dataset and calculate the percent missing for each variable in <code>NFLX</code> and list your findings in R object called <code>NFLX_missingness</code>. <code>NFLX_missingness</code> is a dataframe with two columns: The first column, <code>Variable</code>, stores the variable names and the second column, <code>Missingness</code> shows the percent missing in percentage points with two decimal points.</p>
+</div>
+</div>
+</section>
+<section id="your-code-for-task-1a" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-task-1a">Your code for Task 1A</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>NFLX <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/P/Downloads/USK/USK/usk/NFLX.csv"</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>NFLX_missingness <span class="ot">&lt;-</span> NFLX <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(<span class="sc">~</span><span class="fu">mean</span>(<span class="fu">is.na</span>(.)) <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>NFLX_missingness_table <span class="ot">&lt;-</span> NFLX_missingness <span class="sc">%&gt;%</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(NFLX_missingness_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;table class="table table-striped" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; TICKER &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; CNAME &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; ACTDATS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; ESTIMATOR &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; ANALYS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; FPI &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; MEASURE &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; VALUE &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; FPEDATS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; REVDATS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; REVTIMS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; ANNDATS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; ANNTIMS &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; ACTUAL &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; ANNDATS_ACT &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; ANNTIMS_ACT &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.115304 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.115304 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>data_long <span class="ot">&lt;-</span> <span class="fu">gather</span>(NFLX_missingness, <span class="at">key =</span> <span class="st">"Variable"</span>, <span class="at">value =</span> <span class="st">"MissingPercentage"</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>color_palette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#E41A1C"</span>, <span class="st">"#377EB8"</span>, <span class="st">"#4DAF4A"</span>, <span class="st">"#FF7F00"</span>, <span class="st">"#F781BF"</span>, <span class="st">"#A65628"</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"#984EA3"</span>, <span class="st">"#999999"</span>, <span class="st">"#66C2A5"</span>, <span class="st">"#FC8D62"</span>, <span class="st">"#8EBA42"</span>, <span class="st">"#FFD92F"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"#E7298A"</span>, <span class="st">"#1B9E77"</span>, <span class="st">"#D95F02"</span>, <span class="st">"#7570B3"</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>missingness_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Variable, <span class="sc">-</span>MissingPercentage), <span class="at">y =</span> MissingPercentage, <span class="at">fill =</span> Variable)) <span class="sc">+</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> color_palette) <span class="sc">+</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Missing Values Percentage by Variable"</span>, <span class="at">x =</span> <span class="st">"Variable"</span>, <span class="at">y =</span> <span class="st">"Missing Percentage"</span>) <span class="sc">+</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(missingness_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 1B: Data Manipulation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Conduct the following data manipulations on <code>NFLX</code>:</p>
+<ul>
+<li><p>Drop rows from the data set when a variable has a missing value</p></li>
+<li><p>Drop rows from the data set the quarterly forecasts (drop FPI=6)</p></li>
+<li><p>Declare TICKER, CNAME, ESTIMATOR , ANALYS, FPI , and MEASURE variables as factor</p></li>
+<li><p>Declare ACTDATS, FPEDATS , ANNDATS, REVDATS, ANNDATS_ACT as time variable.</p></li>
+<li><p>Drop ANNTIMS_ACT, ANNTIMS , and REVTIMS</p></li>
+<li><p>Create a new column named YEAR that captures the year in FPEDATS</p></li>
+<li><p>Name your reduced dataset as <code>NFLX1</code></p></li>
+<li><p>Print out data structure and the summary of NFLX1</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="your-code-for-task-1b" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-task-1b">Your code for Task 1B</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy NFLX to NFLX1 without assigning data types</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>NFLX1 <span class="ot">&lt;-</span> NFLX</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows from the data set when a variable has a missing value</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>NFLX1 <span class="ot">&lt;-</span> NFLX1 <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows from the data set where FPI=6</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>NFLX1 <span class="ot">&lt;-</span> NFLX1 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(FPI <span class="sc">!=</span> <span class="dv">6</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop ANNTIMS_ACT, ANNTIMS, and REVTIMS</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>NFLX1 <span class="ot">&lt;-</span> NFLX1 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>ANNTIMS_ACT, <span class="sc">-</span>ANNTIMS, <span class="sc">-</span>REVTIMS)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column named YEAR that is an exact copy of the data in FPEDATS</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>NFLX1 <span class="ot">&lt;-</span> NFLX1 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">YEAR =</span> FPEDATS)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out data structure and the summary of NFLX1</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(NFLX1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   2603 obs. of  14 variables:
+ $ TICKER     : chr  "NFLX" "NFLX" "NFLX" "NFLX" ...
+ $ CNAME      : chr  "NETFLIX INC." "NETFLIX INC." "NETFLIX INC." "NETFLIX INC." ...
+ $ ACTDATS    : int  20020805 20021202 20021202 20021202 20021205 20030106 20030115 20030116 20030121 20030314 ...
+ $ ESTIMATOR  : int  183 2178 1872 220 2178 1872 2227 220 1872 481 ...
+ $ ANALYS     : int  79868 80485 6749 57596 80485 6749 82629 57596 6749 81599 ...
+ $ FPI        : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ MEASURE    : chr  "EPS" "EPS" "EPS" "EPS" ...
+ $ VALUE      : num  -0.025 -0.0321 -0.0207 -0.0179 -0.0286 -0.0136 -0.0164 -0.0071 0.0107 0.0129 ...
+ $ FPEDATS    : int  20021231 20021231 20021231 20021231 20021231 20021231 20021231 20031231 20031231 20031231 ...
+ $ REVDATS    : int  20021129 20021202 20021202 20021206 20021205 20030114 20030115 20030417 20030402 20030409 ...
+ $ ANNDATS    : int  20020805 20021202 20021202 20021202 20021204 20030102 20030115 20030116 20030116 20030314 ...
+ $ ACTUAL     : num  -0.005 -0.005 -0.005 -0.005 -0.005 -0.005 -0.005 0.0393 0.0393 0.0393 ...
+ $ ANNDATS_ACT: int  20030115 20030115 20030115 20030115 20030115 20030115 20030115 20040121 20040121 20040121 ...
+ $ YEAR       : int  20021231 20021231 20021231 20021231 20021231 20021231 20021231 20031231 20031231 20031231 ...
+ - attr(*, "na.action")= 'omit' Named int [1:217] 5057 5058 5059 5060 5061 5062 5063 5064 5065 5066 ...
+  ..- attr(*, "names")= chr [1:217] "5057" "5058" "5059" "5060" ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(NFLX1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    TICKER             CNAME              ACTDATS           ESTIMATOR   
+ Length:2603        Length:2603        Min.   :20020805   Min.   :  11  
+ Class :character   Class :character   1st Qu.:20101021   1st Qu.: 192  
+ Mode  :character   Mode  :character   Median :20141009   Median : 899  
+                                       Mean   :20136831   Mean   :1376  
+                                       3rd Qu.:20180122   3rd Qu.:2502  
+                                       Max.   :20210119   Max.   :4439  
+     ANALYS            FPI      MEASURE              VALUE       
+ Min.   :  1047   Min.   :1   Length:2603        Min.   :-0.150  
+ 1st Qu.: 71755   1st Qu.:1   Class :character   1st Qu.: 0.190  
+ Median : 82010   Median :1   Mode  :character   Median : 0.430  
+ Mean   : 89534   Mean   :1                      Mean   : 1.339  
+ 3rd Qu.:114459   3rd Qu.:1                      3rd Qu.: 2.015  
+ Max.   :194536   Max.   :1                      Max.   : 7.670  
+    FPEDATS            REVDATS            ANNDATS             ACTUAL      
+ Min.   :20021231   Min.   :20021129   Min.   :20020805   Min.   :-0.005  
+ 1st Qu.:20101231   1st Qu.:20110120   1st Qu.:20101021   1st Qu.: 0.250  
+ Median :20141231   Median :20141013   Median :20141009   Median : 0.430  
+ Mean   :20137082   Mean   :20137740   Mean   :20136830   Mean   : 1.384  
+ 3rd Qu.:20181231   3rd Qu.:20180122   3rd Qu.:20180122   3rd Qu.: 2.680  
+ Max.   :20201231   Max.   :20210119   Max.   :20210119   Max.   : 6.080  
+  ANNDATS_ACT            YEAR         
+ Min.   :20030115   Min.   :20021231  
+ 1st Qu.:20110126   1st Qu.:20101231  
+ Median :20150120   Median :20141231  
+ Mean   :20145973   Mean   :20137082  
+ 3rd Qu.:20190117   3rd Qu.:20181231  
+ Max.   :20210119   Max.   :20201231  </code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 2: Calculate Number of Analysts and Brokerage Houses
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Calculate the total number of <strong>unique</strong> analysts in <strong>NFLX1</strong> dataset that provide forecasts <strong>each year</strong> and name your R object as <strong>NumberAnalyst</strong></p></li>
+<li><p>Calculate the total number of <strong>unique</strong> brokerage houses (ESTIMATOR) in <strong>NFLX1</strong> dataset that provide forecasts <strong>each year</strong> and name your R object as <strong>NumberBrokerage</strong></p></li>
+<li><p><strong>Need Written Response in this callout:</strong> In which year(s) we have the highest number of unique analysts providing forecasts for NFLX ticker? In which year(s), we have the highest number of unique brokerage houses providing forecasts for the NFLX ticker.</p></li>
+</ul>
+<p><br>
+<strong><em>In 2020 , Netflix received forecasts from a distinct set of analysts and brokerage firms. on the same year the number of unique brokerage firm was 44 on the same period the number of unique analyst was 46.</em></strong></p>
+</div>
+</div>
+</section>
+<section id="your-code-for-task-2" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-task-2">Your code for Task 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of unique analysts by year</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>NumberAnalyst <span class="ot">&lt;-</span> NFLX1 <span class="sc">%&gt;%</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(YEAR) <span class="sc">%&gt;%</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NumAnalysts =</span> <span class="fu">n_distinct</span>(ANALYS)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>)  </span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the number of unique brokerages by year</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>NumberBrokerage <span class="ot">&lt;-</span> NFLX1 <span class="sc">%&gt;%</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(YEAR) <span class="sc">%&gt;%</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NumBrokerage =</span> <span class="fu">n_distinct</span>(ESTIMATOR)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>)  </span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>NumberAnalyst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">YEAR</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">NumAnalysts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold;">20021231</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold;">20031231</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold;">20041231</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold;">20051231</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold;">20061231</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold;">20071231</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold;">20081231</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold;">20091231</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold;">20101231</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold;">20111231</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold;">20121231</td>
+<td style="text-align: right;">38</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold;">20131231</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold;">20141231</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold;">20151231</td>
+<td style="text-align: right;">47</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold;">20161231</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold;">20171231</td>
+<td style="text-align: right;">48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold;">20181231</td>
+<td style="text-align: right;">56</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; font-weight: bold;">20191231</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right; font-weight: bold;">20201231</td>
+<td style="text-align: right;">49</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>NumberBrokerage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold; color: red !important;">YEAR</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold; color: red !important;">NumBrokerage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">20021231</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20031231</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20041231</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20051231</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20061231</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20071231</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20081231</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20091231</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20101231</td>
+<td style="text-align: right;">38</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20111231</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20121231</td>
+<td style="text-align: right;">36</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20131231</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20141231</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20151231</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20161231</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20171231</td>
+<td style="text-align: right;">49</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20181231</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20191231</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20201231</td>
+<td style="text-align: right;">44</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 3: Get the most recent forecast in each year
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>It is quite possible that an analyst makes multiple forecasts throughout the year for the same fiscal period. Remove observations from <strong>NFLX1</strong> if an analyst has multiple predictions for the same year and keep the last one (the most recent forecast for each year). Name your new dataset as <strong>NFLX2.</strong> This step is crucial for successful execution of the following tasks. Print the dimension of <code>NFLX2</code>.</p></li>
+<li><p>Check your work: If your <code>NFLX2</code> dataset has 641 rows and 14 columns, then you are on the right track. If not, please seek help!</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="your-code-for-task-3" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-task-3">Your code for Task 3</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>NFLX2 <span class="ot">&lt;-</span> NFLX1 <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ANALYS, YEAR) <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(REVDATS <span class="sc">==</span> <span class="fu">max</span>(REVDATS)) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>dim_output <span class="ot">&lt;-</span> <span class="fu">dim</span>(NFLX2)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>dim_table <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(dim_output) <span class="sc">%&gt;%</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"green"</span>)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the styled dimension table</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dim_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;table class="table table-striped" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;font-weight: bold;color: blue !important;"&gt; dim_output &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;font-weight: bold;color: green !important;"&gt; 641 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;font-weight: bold;color: green !important;"&gt; 14 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
+</div>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 4: Calculate past accuracy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Create a copy of <code>NFLX2</code> and call it <code>NFLX3</code></p></li>
+<li><p>For every year within the dataset <code>NFLX3</code>, compute the forecasting performance of each analyst for the current year and store the results in a new column labeled <code>accuracy</code>. In the calculation of forecast performance, you can use the VALUE-ACTUAL as the forecast accuracy measure.</p></li>
+<li><p>For each year in the <code>NFLX3</code> dataset, compute the forecasting performance of each analyst from the <strong>previous year</strong> and store the results in a new column called <code>past_accuracy</code></p></li>
+<li><p>As an example, consider the year 2006, where analyst 1047, employed at brokerage house 464, provided an estimated end-of-period EPS of 0.0929 (VALUE). However, the actual EPS for that year turned out to be 0.1014 (ACTUAL), resulting in a forecasting error of -0.0085. Consequently, in the subsequent year, 2007, the past_accuracy metric for analyst 1047 would reflect this error by taking the value of -0.0085 (VALUE-ACTUAL).</p></li>
+<li><p>This action will create some missing values and this is perfectly fine.</p></li>
+<li><p>If your code produces 144 NAs, then you are on the right track.</p></li>
+<li><p>Note that we are creating copies of the original dataset at each step to facilitate error detection in case any mistakes occur during the process.</p></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="your-code-for-task-4" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-task-4">Your code for Task 4</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>NFLX3 <span class="ot">&lt;-</span> NFLX2</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>NFLX3 <span class="ot">&lt;-</span> NFLX3 <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(YEAR, ANALYS) <span class="sc">%&gt;%</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">accuracy =</span> VALUE <span class="sc">-</span> ACTUAL) <span class="sc">%&gt;%</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ANALYS) <span class="sc">%&gt;%</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(YEAR) <span class="sc">%&gt;%</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">past_accuracy =</span> <span class="fu">lag</span>(accuracy))</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(NFLX3<span class="sc">$</span>past_accuracy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 144</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(NFLX3<span class="sc">$</span>past_accuracy)) <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">144</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1"></h3>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 5: Forecast Horizon
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>The longer the forecast horizon, the higher the uncertainty associated with EPS forecasts. To control for this fact, create a new column in <strong>NFLX3</strong> called <strong>horizon</strong> that captures the forecast horizon (ANNDATS_ACT- ANNDATS) for <strong>each analyst</strong>.</p></li>
+<li><p>We anticipate observing a negative correlation between <code>accuracy</code> and <code>horizon</code>. Typically, as the forecast horizon increases, the accuracy tends to decrease, and vice versa. However, in our dataset, there is an exception where we find a positive correlation between <code>accuracy</code> and <code>horizon</code> for one specific year. Write an R code to identify and determine which year exhibits this positive correlation.</p></li>
+<li><p><strong>Need Written Response in this callout:</strong> Enter the year in here.</p></li>
+</ul>
+<p><strong><em>The year was 2018 on the month of December 31 to be precise with a correlation value of 0.243.</em></strong></p>
+</div>
+</div>
+</section>
+</section>
+<section id="your-code-for-task-5" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-task-5">Your code for Task 5</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your data manipulation code</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>NFLX3 <span class="ot">&lt;-</span> NFLX3 <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ANALYS) <span class="sc">%&gt;%</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(YEAR) <span class="sc">%&gt;%</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">past_accuracy =</span> <span class="fu">lag</span>(accuracy, <span class="at">default =</span> <span class="cn">NA</span>))  <span class="co"># Correct lag function usage</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the forecast horizon for each analyst</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>NFLX3 <span class="ot">&lt;-</span> NFLX3 <span class="sc">%&gt;%</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">horizon =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(ANNDATS_ACT, ANNDATS, <span class="at">units =</span> <span class="st">"days"</span>)))</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the correlation between accuracy and horizon for each year</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>correlation_by_year <span class="ot">&lt;-</span> NFLX3 <span class="sc">%&gt;%</span></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(YEAR) <span class="sc">%&gt;%</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">correlation =</span> <span class="fu">cor</span>(accuracy, horizon, <span class="at">use =</span> <span class="st">"complete.obs"</span>))</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the year with a positive correlation</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>positive_corr_year <span class="ot">&lt;-</span> correlation_by_year <span class="sc">%&gt;%</span></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(correlation <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the year with a positive correlation using kable for formatting</span></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(positive_corr_year, <span class="at">format =</span> <span class="st">"html"</span>, <span class="at">caption =</span> <span class="st">"Years with Positive Correlation"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>Years with Positive Correlation</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">YEAR</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">correlation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">20111231</td>
+<td style="text-align: right;">0.2266475</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20121231</td>
+<td style="text-align: right;">0.0653612</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20131231</td>
+<td style="text-align: right;">0.0213975</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20151231</td>
+<td style="text-align: right;">0.0558202</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20181231</td>
+<td style="text-align: right;">0.2430011</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2"></h3>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Table 6: Experience
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>We assume that if an analyst is monitoring a company for a long period of time, he/she is expected to make more informed predictions. Create a new column in NFLX3 called <strong>experience</strong> that counts the cumulative number of years the analyst monitor (have predictions) the company. Print the summary of experience column.</p></li>
+<li><p><strong>Hint:</strong> Try to use cumsum() function in R.</p></li>
+<li><p><strong>Need Written Response in this callout:</strong> Which analyst (s) has the highest number of <strong>experience</strong> in <strong>NFLX3</strong> dataset and for how long do they monitor the NFLX ticker?</p></li>
+</ul>
+<p><strong><em>There were two analysts of unique identifier 72088 and 77748 with the highest experience who observed the NTFLX ticker for 17 years each as observed in the graph.</em></strong></p>
+</div>
+</div>
+</section>
+</section>
+<section id="your-code-for-task-6" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-task-6">Your code for Task 6</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter your code for Task 6 below </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>NFLX3 <span class="ot">&lt;-</span> NFLX3 <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ANALYS) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">experience =</span> <span class="fu">cumsum</span>(<span class="sc">!</span><span class="fu">duplicated</span>(YEAR)))</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>max_experience <span class="ot">&lt;-</span> NFLX3 <span class="sc">%&gt;%</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ANALYS) <span class="sc">%&gt;%</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">experience =</span> <span class="fu">max</span>(experience)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(experience <span class="sc">==</span> <span class="fu">max</span>(experience)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(experience))</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>experience_summary <span class="ot">&lt;-</span> NFLX3 <span class="sc">%&gt;%</span></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Min =</span> <span class="fu">min</span>(experience),</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">Max =</span> <span class="fu">max</span>(experience),</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean =</span> <span class="fu">mean</span>(experience),</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">Median =</span> <span class="fu">median</span>(experience),</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD =</span> <span class="fu">sd</span>(experience)</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>experience_summary <span class="sc">%&gt;%</span></span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">ANALYS</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Min</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Max</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Median</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1047</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4.000000</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">2.1602469</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1324</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1717</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4.000000</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">2.1602469</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5963</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6749</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9584</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4.500000</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">2.4494897</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10214</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14162</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19083</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19787</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5.500000</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: right;">3.0276504</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22098</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22953</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">8.000000</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">4.4721360</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">32416</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">46176</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">46442</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">47195</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.000000</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.5811388</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">48155</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48634</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">49454</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">51867</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">53012</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">54310</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4.500000</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">2.4494897</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">54440</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">54636</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4.000000</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">2.1602469</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">56585</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.000000</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.5811388</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">57008</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">57596</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">58063</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">58066</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.000000</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.5811388</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">58823</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">70566</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.000000</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.5811388</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">71040</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">71466</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">6.000000</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">3.3166248</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">71470</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">71755</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">6.000000</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">3.3166248</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">72001</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">72088</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">9.000000</td>
+<td style="text-align: right;">9.0</td>
+<td style="text-align: right;">5.0497525</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">72772</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">73430</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">74427</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">77748</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">9.000000</td>
+<td style="text-align: right;">9.0</td>
+<td style="text-align: right;">5.0497525</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">78488</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">7.000000</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">3.8944405</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">78750</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">79868</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">80183</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">6.500000</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">3.6055513</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">80234</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">80485</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">80523</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">7.000000</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">3.8944405</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">81118</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3.666667</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">2.1213203</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">81208</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">81599</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4.500000</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">2.4494897</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">82010</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5.500000</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: right;">3.0276504</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">82079</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">82492</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">82629</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">82656</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">82890</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2.833333</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.4719601</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">83539</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">85902</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">87229</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4.500000</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">2.4494897</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">89663</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">91571</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">91718</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">104524</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">105361</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">105367</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5.500000</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: right;">3.0276504</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">105752</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">106603</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">5.000000</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">2.7386128</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">106993</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">107095</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">107179</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">107279</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">107983</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.000000</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.5811388</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">108897</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">109838</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">110140</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.000000</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.5811388</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">110206</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">110711</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">6.500000</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">3.6055513</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">111516</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">111523</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">113333</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">7.000000</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">3.8944405</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">114029</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">114392</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4.000000</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">2.1602469</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">114459</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">7.500000</td>
+<td style="text-align: right;">7.5</td>
+<td style="text-align: right;">4.1833001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">114980</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">115360</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">117990</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">118593</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">118746</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.000000</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.5811388</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">119202</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">119704</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">120953</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">120988</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">6.500000</td>
+<td style="text-align: right;">6.5</td>
+<td style="text-align: right;">3.6055513</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">121968</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">123215</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">125613</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">125796</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">5.000000</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">2.7386128</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">125888</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">126149</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">126163</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">128228</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.000000</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.5811388</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">128238</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">128394</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">129853</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">130849</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">131744</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">131848</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.000000</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.5811388</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">133463</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">135251</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">135396</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">137026</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">5.000000</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">2.7386128</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">137103</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">137702</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">141291</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">142116</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5.500000</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: right;">3.0276504</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">147131</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">147369</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3.000000</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.5811388</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">148735</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">148843</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">149065</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3.500000</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.8708287</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">149262</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">149299</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">151995</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">152060</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">152603</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">160058</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4.000000</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">2.1602469</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">164392</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.333333</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.5773503</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">164735</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">164750</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">171669</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">180339</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">182826</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.500000</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">1.2909944</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">183197</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">183261</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">183736</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">184258</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">190823</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">191211</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">192063</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">192537</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.500000</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.7071068</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">192545</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">192551</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">193251</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">194536</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>max_experience <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="fu">which</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(max_experience) <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>), <span class="at">background =</span> <span class="st">"#F2F2F2"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="fu">which</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(max_experience) <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">!=</span> <span class="dv">0</span>), <span class="at">background =</span> <span class="st">"#D9EAD3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">ANALYS</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">experience</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right; background-color: #D9EAD3 !important;">72088</td>
+<td style="text-align: right; background-color: #D9EAD3 !important;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: right; background-color: #F2F2F2 !important;">77748</td>
+<td style="text-align: right; background-color: #F2F2F2 !important;">17</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(max_experience, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(ANALYS, <span class="sc">-</span>experience), <span class="at">y =</span> experience, <span class="at">fill =</span> experience)) <span class="sc">+</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Analyst(s) with Maximum Experience"</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Analyst"</span>,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Experience"</span>) <span class="sc">+</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">"magma"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_colorbar</span>(<span class="at">title =</span> <span class="st">"Experience"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3"></h3>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 7: Size
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>If a brokerage house has multiple analysts providing predictions for the same company, it may indicate a greater allocation of resources for company analysis. To capture this, create a new column in the <code>NFLX3</code> dataset called <code>size</code> that calculates the total count of <strong>unique</strong> analysts employed <strong>per year</strong> by <strong>each</strong> brokerage house (ESTIMATOR)</p></li>
+<li><p><strong>Need Written Response in this callout:</strong> Print the frequencies for <strong>size</strong> variable. What does this frequency table reveal about the distribution of the number of analysts hired by brokerage houses in this dataset?</p></li>
+</ul>
+<p><strong><em>The graph shows a clear trend: as the number of analysts rises, the hiring frequency decreases significantly. A clear indication of hiring trend, in which the brokerage firm higher one analyst per season.</em></strong></p>
+</div>
+</div>
+</section>
+</section>
+<section id="your-code-for-task-7" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-task-7">Your code for Task 7</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter your code for Task 7 below </span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>NFLX3 <span class="ot">&lt;-</span> NFLX3 <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(YEAR, ESTIMATOR) <span class="sc">%&gt;%</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">size =</span> <span class="fu">n_distinct</span>(ANALYS))</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>size_freq <span class="ot">&lt;-</span> <span class="fu">table</span>(NFLX3<span class="sc">$</span>size)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>size_table <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(size_freq)</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(size_table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Number of Analysts"</span>, <span class="st">"Frequency"</span>)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>size_table <span class="ot">&lt;-</span> size_table[<span class="fu">order</span>(<span class="sc">-</span>size_table<span class="sc">$</span>Frequency), ]</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>size_table <span class="sc">%&gt;%</span></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Number of Analysts</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">560</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">72</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">9</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> <span class="fu">summary</span>(NFLX3<span class="sc">$</span>size)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Statistic =</span> <span class="fu">names</span>(summary_stats),</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">as.character</span>(summary_stats)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>summary_data <span class="sc">%&gt;%</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Statistic</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Min.</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1st Qu.</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Median</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mean</td>
+<td style="text-align: left;">1.14040561622465</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3rd Qu.</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Max.</td>
+<td style="text-align: left;">3</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(size_table, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(<span class="st">`</span><span class="at">Number of Analysts</span><span class="st">`</span>), <span class="at">y =</span> Frequency, <span class="at">fill =</span> <span class="st">`</span><span class="at">Number of Analysts</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Number of Unique Analysts per Year and ESTIMATOR"</span>) <span class="sc">+</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Number of Analysts"</span>) <span class="sc">+</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency"</span>) <span class="sc">+</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#1f78b4"</span>, <span class="st">"#33a02c"</span>, <span class="st">"#e31a1c"</span>, <span class="st">"#ff7f00"</span>, <span class="st">"#6a3d9a"</span>)  <span class="co"># Example colors, feel free to change</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4"></h3>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 8: Prediction 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>In the year 2020, NETFLIX reported an actual earnings per share (EPS) of $6.08. To predict this EPS value based on historical data, we will employ a linear regression model using the dataset <code>NFLX3</code> up until the year 2019. In this model, the target variable will be <code>ACTUAL</code> and the predictor variables will include <code>VALUE</code> and <code>past_accuracy</code>. C.all your model as <code>model1.</code></p></li>
+<li><p><strong>Need Written Response in this callout:</strong> Using the linear regression model ‘model1,’ which has been trained on historical data up to the year 2019, what is the forecasted EPS (Earnings Per Share) for the year 2020? Please provide a brief explanation of the method you employed to make this prediction. If you encountered any challenges or were unable to make the calculation, briefly describe the specific issues you encountered.</p></li>
+</ul>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong><em>When utilizing the linear regression model ‘model1’, trained on historical data up until 2019, to forecast EPS for 2020, a rigorous evaluation of the model’s fit is conducted using the R-squared value. Should this metric surpass the 0.5 threshold, indicating a robust fit, the forecasting process commences. Central to this process is the calculation of the mean of the ‘past_accuracy’ variable. In instances where the R-squared value meets the prescribed criterion, a new dataset is meticulously curated, ensuring the incorporation of pertinent independent variables. Subsequently, EPS estimates for the future period are meticulously derived through the adept utilization of the ‘predict’ function.However, in scenarios where the R-squared value fails to meet the specified threshold, a cautionary warning emerges, signaling potential inaccuracies in the subsequent EPS predictions. Addressing specific nuances in data configuration or refining the model’s training approach becomes imperative, safeguarding the accuracy and reliability of future EPS projections.</em></strong></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="your-code-for-task-8" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-task-8">Your code for Task 8</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>mean_past_accuracy <span class="ot">&lt;-</span> <span class="fu">mean</span>(NFLX3<span class="sc">$</span>past_accuracy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ACTUAL <span class="sc">~</span> VALUE <span class="sc">+</span> past_accuracy, <span class="at">data =</span> NFLX3)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the R-squared value of the model</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>r_squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(model1)<span class="sc">$</span>r.squared</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="co"># If the R-squared value is high, then we can use the model to generate a forecast</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (r_squared <span class="sc">&gt;</span> <span class="fl">0.5</span>) {</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  new_data_future <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">VALUE =</span> <span class="fl">6.08</span>, <span class="co"># Replace this with the actual value of VALUE for the future period</span></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">past_accuracy =</span> mean_past_accuracy</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>  predicted_eps_future <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata =</span> new_data_future)</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Forecasted EPS for future period: $"</span>, <span class="fu">round</span>(predicted_eps_future, <span class="dv">2</span>))</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"The R-squared value is low, so the model may not be able to accurately predict future values of the dependent variable."</span>)</span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Forecasted EPS for future period: $ 6.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(mean_past_accuracy, <span class="dv">2</span>), <span class="at">col.names =</span> <span class="st">"Mean past_accuracy"</span>, <span class="at">format =</span> <span class="st">"html"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">position =</span> <span class="st">"center"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Mean past_accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">-0.09</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<section id="section-5" class="level3">
+<h3 class="anchored" data-anchor-id="section-5"></h3>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 9: Prediction 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>As an alternative approach, instead of modeling the ‘ACTUAL’ value, we can obtain the mean and median forecasts for the year 2020 as our best estimates of the EPS value for that year.</p></li>
+<li><p><strong>Need Written Response in this callout:</strong> Please calculate these forecasts and then compare them with the results from the previous task. Finally, provide your insights and comments based on your findings.</p></li>
+</ul>
+<p><strong><em>In this alternative strategy, we have opted to derive our EPS forecasts for 2020 based on two fundamental metrics: the mean and median projections. These straightforward yet essential statistical measures offer valuable insights. The mean forecast, standing at approximately $1.24, reflects</em></strong> <strong><em>a balanced average of our expectations for 2020 EPS. In contrast, the median forecast, notably lower at around $0.41, underscores a central tendency amidst the data distribution. When juxtaposed with the model-driven approach expl</em>ored earlier, it becomes apparent that the model’s complexity might yield a more nuanced and potentially accurate prediction. However, the simplicity of mean and median forecasts should not be underestimated. While lacking the sophistication of a well-fitted model, they provide accessible, <em>high-level insights. The selection between these methodologies should hinge upon the data’s quality and the specific context of the analysis, emphasizing the need for a judicious approach in forecasting decisions.</em></strong></p>
+</div>
+</div>
+</section>
+</section>
+<section id="your-code-for-task-9" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-task-9">Your code for Task 9</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>mean_forecast <span class="ot">&lt;-</span> <span class="fu">mean</span>(NFLX3<span class="sc">$</span>VALUE, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>median_forecast <span class="ot">&lt;-</span> <span class="fu">median</span>(NFLX3<span class="sc">$</span>VALUE, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>forecast_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Metric =</span> <span class="fu">c</span>(<span class="st">"Mean forecast for 2020"</span>, <span class="st">"Median forecast for 2020"</span>),</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(<span class="fu">round</span>(mean_forecast, <span class="dv">2</span>), <span class="fu">round</span>(median_forecast, <span class="dv">2</span>))</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>forecast_summary <span class="sc">%&gt;%</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Metric"</span>, <span class="st">"Value"</span>), <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"c"</span>), <span class="at">caption =</span> <span class="st">"Forecast Summary for 2020"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">position =</span> <span class="st">"center"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<caption>Forecast Summary for 2020</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Metric</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mean forecast for 2020</td>
+<td style="text-align: center;">1.24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Median forecast for 2020</td>
+<td style="text-align: center;">0.41</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<section id="section-6" class="level3">
+<h3 class="anchored" data-anchor-id="section-6"></h3>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Task 10: Averages
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Generate a new dataset named <code>NFLX4</code> by aggregating data from <code>NFLX3</code> Include the variables <code>size</code>, <code>experience</code>, <code>horizon</code>, <code>accuracy,</code> <code>past_accuracy</code>, and <code>ACTUAL</code> in <code>NFLX4</code>. When calculating the yearly averages for these variables, ignore any missing values (NAs). Present a summary of the <code>NFLX4</code> dataset.</p></li>
+<li><p><strong>Need Written Response in this callout:</strong> Subsequently, employ correlation analysis or exploratory data analysis to get insights into the relationships between these variables and ‘ACTUAL,’ if such relationships exist.</p></li>
+</ul>
+<p><strong><em>Through in-depth correlation analysis and exploratory data analysis of the NFLX4 data set, significant insights into the relationship between various variables and ‘ACTUAL’ earnings per share have surfaced. The data uncovers positive correlations between ‘ACTUAL’ and ‘size’ (0.18) as well as ‘experience’ (0.69), suggesting that larger analyst groups and more seasoned analysts tend to provide more accurate forecasts. In contrast, negative correlations with ‘horizon’ (-0.63) and ‘past_accuracy’ (-0.80) indicate that analysts with longer forecasting horizons and higher past accuracy might yield less precise predictions for ‘ACTUAL’ earnings per share. Detailed scatter plots further underscore these trends, including the one highlighting enhanced accuracy with an increasing number of analysts. These findings present invaluable insights for analysts, investors, and financial decision-makers, offering essential perspectives into the factors influencing earnings per share forecasts.</em></strong></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>NFLX4 <span class="ot">&lt;-</span> NFLX3 <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(YEAR) <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fu">mean</span>(size, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">experience =</span> <span class="fu">mean</span>(experience, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">horizon =</span> <span class="fu">mean</span>(horizon, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">accuracy =</span> <span class="fu">mean</span>(accuracy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">past_accuracy =</span> <span class="fu">mean</span>(past_accuracy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ACTUAL =</span> <span class="fu">mean</span>(ACTUAL, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(NFLX4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      YEAR               size         experience       horizon       
+ Min.   :20021231   Min.   :1.000   Min.   :1.000   Min.   :0.06284  
+ 1st Qu.:20066231   1st Qu.:1.074   1st Qu.:2.664   1st Qu.:0.08547  
+ Median :20111231   Median :1.105   Median :3.400   Median :0.09289  
+ Mean   :20111231   Mean   :1.132   Mean   :3.611   Mean   :0.09004  
+ 3rd Qu.:20156231   3rd Qu.:1.202   3rd Qu.:4.869   3rd Qu.:0.09512  
+ Max.   :20201231   Max.   :1.300   Max.   :6.061   Max.   :0.10656  
+                                                                     
+    accuracy         past_accuracy           ACTUAL       
+ Min.   :-0.822085   Min.   :-0.798219   Min.   :-0.0050  
+ 1st Qu.:-0.019087   1st Qu.:-0.028736   1st Qu.: 0.0914  
+ Median :-0.015035   Median :-0.013423   Median : 0.2643  
+ Mean   :-0.048310   Mean   :-0.060652   Mean   : 0.9248  
+ 3rd Qu.:-0.005415   3rd Qu.:-0.009260   3rd Qu.: 0.5678  
+ Max.   : 0.121449   Max.   :-0.001547   Max.   : 6.0800  
+                     NA's   :1                            </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(NFLX4[, <span class="fu">c</span>(<span class="st">"size"</span>, <span class="st">"experience"</span>, <span class="st">"horizon"</span>, <span class="st">"accuracy"</span>, <span class="st">"past_accuracy"</span>, <span class="st">"ACTUAL"</span>)], <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(correlation_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     size  experience    horizon    accuracy past_accuracy
+size           1.00000000  0.07451284 -0.1317823 -0.04537307    -0.1810330
+experience     0.07451284  1.00000000 -0.4844637 -0.25882136    -0.4620906
+horizon       -0.13178225 -0.48446371  1.0000000  0.22264895     0.4979377
+accuracy      -0.04537307 -0.25882136  0.2226489  1.00000000    -0.1604379
+past_accuracy -0.18103301 -0.46209061  0.4979377 -0.16043792     1.0000000
+ACTUAL         0.18223220  0.68707354 -0.6346966 -0.31928984    -0.7958850
+                  ACTUAL
+size           0.1822322
+experience     0.6870735
+horizon       -0.6346966
+accuracy      -0.3192898
+past_accuracy -0.7958850
+ACTUAL         1.0000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>custom_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#4575b4"</span>, <span class="st">"#91bfdb"</span>, <span class="st">"#e0f3f8"</span>, <span class="st">"#fee090"</span>, <span class="st">"#fc8d59"</span>, <span class="st">"#d73027"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  correlation_matrix,</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"color"</span>,</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> custom_colors,</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"upper"</span>,</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">tl.cex =</span> <span class="fl">0.7</span>,</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">cl.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">diag =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">number.cex =</span> <span class="fl">0.8</span></span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(NFLX4, <span class="fu">aes</span>(<span class="at">x =</span> YEAR, <span class="at">y =</span> experience, <span class="at">fill =</span> YEAR)) <span class="sc">+</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Experience Distribution Across Years"</span>) <span class="sc">+</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Experience"</span>) <span class="sc">+</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> custom_colors) <span class="sc">+</span>  <span class="co"># Apply custom colors</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Continuous x aesthetic
+ℹ did you forget `aes(group = ...)`?</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation: fill
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(NFLX4, <span class="fu">aes</span>(<span class="at">x =</span> accuracy, <span class="at">fill =</span> YEAR)) <span class="sc">+</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Density Plot of Accuracy"</span>) <span class="sc">+</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Accuracy"</span>) <span class="sc">+</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> custom_colors) <span class="sc">+</span>  <span class="co"># Apply custom colors</span></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation: fill
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(NFLX4, <span class="fu">aes</span>(<span class="at">x =</span> YEAR, <span class="at">y =</span> size, <span class="at">fill =</span> YEAR)) <span class="sc">+</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Size Distribution Across Years"</span>) <span class="sc">+</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Size"</span>) <span class="sc">+</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> custom_colors) <span class="sc">+</span>  <span class="co"># Apply custom colors</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Continuous x aesthetic
+ℹ did you forget `aes(group = ...)`?
+The following aesthetics were dropped during statistical transformation: fill
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(NFLX4, <span class="fu">aes</span>(<span class="at">x =</span> horizon, <span class="at">fill =</span> YEAR)) <span class="sc">+</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Density Plot of Horizon"</span>) <span class="sc">+</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Horizon"</span>) <span class="sc">+</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> custom_colors) <span class="sc">+</span>  <span class="co"># Apply custom colors</span></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation: fill
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(NFLX4, <span class="fu">aes</span>(<span class="at">x =</span> ACTUAL, <span class="at">fill =</span> YEAR)) <span class="sc">+</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">bins =</span> <span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Histogram of ACTUAL"</span>) <span class="sc">+</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"ACTUAL"</span>) <span class="sc">+</span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Frequency"</span>) <span class="sc">+</span></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> custom_colors) <span class="sc">+</span>  <span class="co"># Apply custom colors</span></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation: fill
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-6.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>correlation_data <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">melt</span>(correlation_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in data.table::melt(correlation_matrix): The melt generic in data.table
+has been passed a matrix and will attempt to redirect to the relevant reshape2
+method; please note that reshape2 is deprecated, and this redirection is now
+deprecated as well. To continue using melt methods from reshape2 while both
+libraries are attached, e.g. melt.list, you can prepend the namespace like
+reshape2::melt(correlation_matrix). In the next version, this warning will
+become an error.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(correlation_data, <span class="fu">aes</span>(<span class="at">x =</span> Var1, <span class="at">y =</span> Var2, <span class="at">fill =</span> value)) <span class="sc">+</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> custom_colors) <span class="sc">+</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Correlation Heatmap"</span>) <span class="sc">+</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Variables"</span>) <span class="sc">+</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Variables"</span>) <span class="sc">+</span></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-7.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(NFLX4, <span class="fu">aes</span>(<span class="at">x =</span> past_accuracy, <span class="at">y =</span> ACTUAL)) <span class="sc">+</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#41b6c4"</span>, <span class="at">shape =</span> <span class="dv">20</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"ACTUAL vs. past_accuracy"</span>) <span class="sc">+</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"past_accuracy"</span>) <span class="sc">+</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"ACTUAL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-8.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Made with <a href="https://quarto.org/">Uday Sashank Kanapala</a></div>   
+    <div class="nav-footer-center"><a href="mailto:udays.%20udaysashank999@gmail.com">Contact Uday Sashank Kanapala</a></div>
+    <div class="nav-footer-right"><a href="https://github.com/udaysashank">Github Code Repo</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

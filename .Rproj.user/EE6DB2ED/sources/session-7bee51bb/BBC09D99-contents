@@ -1,0 +1,96 @@
+---
+title: "Exploratory data analysis and machine learning on Iris dataset"
+author: "Navya reddy"
+date: "2023-12-06"
+categories: [news, code, analysis,plotly,plot]
+image: "b.jpg"
+---
+
+***The script loads and explores the Iris dataset, visualizing features like sepal length and petal dimensions. It then implements a decision tree model, assesses its accuracy on a test set, and presents a confusion matrix. The script provides insights through EDA and demonstrates a basic machine learning approach for species classification in the Iris dataset.***
+
+```{r}
+# Assuming IRSI_data is your dataset
+# You need to replace it with the actual name of your dataset
+
+# Load necessary libraries
+library(dplyr)
+library(ggplot2)
+
+# Load your IRSI data (replace "your_dataset.csv" with your actual dataset file)
+IRSI_data <- read.csv("C:/Users/HP/Downloads/Iris.csv")
+
+# Display the first few rows of the dataset
+head(IRSI_data)
+
+# Summary statistics
+summary(IRSI_data)
+
+# Distribution plot for Sepal.Length
+ggplot(IRSI_data, aes(x = SepalLengthCm)) +
+  geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
+  labs(title = "Distribution of Sepal Length",
+       x = "Sepal Length",
+       y = "Frequency")
+
+# Boxplot for Sepal.Length by Species
+ggplot(IRSI_data, aes(x = Species, y = SepalWidthCm)) +
+  geom_boxplot(fill = "lightblue", color = "black") +
+  labs(title = "Boxplot of Sepal Length by Species",
+       x = "Species",
+       y = "Sepal Length")
+
+# Scatter plot for Petal.Length and Petal.Width
+ggplot(IRSI_data, aes(x = PetalLengthCm, y = PetalWidthCm, color = Species)) +
+  geom_point() +
+  labs(title = "Scatter Plot of Petal Length vs Petal Width",
+       x = "Petal Length",
+       y = "Petal Width",
+       color = "Species")
+# Pair plot
+pairs(IRSI_data[, c("SepalLengthCm", "SepalWidthCm", "PetalLengthCm", "PetalWidthCm")], 
+      main = "Pair Plot of Iris Data",
+      pch = 21, bg = c("red", "green3", "blue")[unclass(IRSI_data$Species)])
+# Correlation matrix
+cor_matrix <- cor(IRSI_data[, c("SepalLengthCm", "SepalWidthCm", "PetalLengthCm", "PetalWidthCm")])
+
+# Violin plot
+ggplot(IRSI_data, aes(x = Species, y = PetalLengthCm, fill = Species)) +
+  geom_violin(trim = FALSE) +
+  labs(title = "Violin Plot of Petal Length by Species",
+       x = "Species",
+       y = "Petal Length",
+       fill = "Species")
+# Density plot
+ggplot(IRSI_data, aes(x = PetalWidthCm, fill = Species)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Density Plot of Petal Width by Species",
+       x = "Petal Width",
+       fill = "Species")
+# Load necessary library for machine learning
+library(rpart)
+
+# Split the data into training and testing sets
+set.seed(123)
+sample_index <- sample(1:nrow(IRSI_data), 0.7 * nrow(IRSI_data))
+train_data <- IRSI_data[sample_index, ]
+test_data <- IRSI_data[-sample_index, ]
+
+# Build a decision tree model
+iris_model <- rpart(Species ~ SepalLengthCm + SepalWidthCm + PetalLengthCm + PetalWidthCm, data = train_data, method = "class")
+
+# Visualize the decision tree
+plot(iris_model)
+text(iris_model, cex = 0.8)
+
+# Make predictions on the test set
+predictions <- predict(iris_model, newdata = test_data, type = "class")
+
+# Evaluate the model
+conf_matrix <- table(predictions, test_data$Species)
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+print(paste("Accuracy:", round(accuracy, 2)))
+
+# If you want to see the confusion matrix
+print("Confusion Matrix:")
+print(conf_matrix)
+```

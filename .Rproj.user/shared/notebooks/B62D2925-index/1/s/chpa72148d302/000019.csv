@@ -1,0 +1,7 @@
+"0","ggplot(NFLX4, aes(x = ACTUAL, fill = YEAR)) +"
+"0","  geom_histogram(alpha = 0.5, bins = 30) +"
+"0","  ggtitle(""Histogram of ACTUAL"") +"
+"0","  xlab(""ACTUAL"") +"
+"0","  ylab(""Frequency"") +"
+"0","  scale_fill_manual(values = custom_colors) +  # Apply custom colors"
+"0","  theme_minimal()"

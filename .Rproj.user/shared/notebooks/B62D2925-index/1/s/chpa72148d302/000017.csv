@@ -1,0 +1,8 @@
+"0",""
+"0","ggplot(NFLX4, aes(x = horizon, fill = YEAR)) +"
+"0","  geom_density(alpha = 0.5) +"
+"0","  ggtitle(""Density Plot of Horizon"") +"
+"0","  xlab(""Horizon"") +"
+"0","  ylab(""Density"") +"
+"0","  scale_fill_manual(values = custom_colors) +  # Apply custom colors"
+"0","  theme_minimal()"

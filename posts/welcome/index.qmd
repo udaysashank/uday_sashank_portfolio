@@ -1,0 +1,12 @@
+---
+title: "Welcome To My Blog"
+author: "Uday Sashank Kanapala"
+date: "2023-11-26"
+categories: [news]
+---
+
+This is the first post in my blog. Welcome!
+
+![](uday.jpg)
+
+In this section blog we will review a few of my projects done on different environments and career period.

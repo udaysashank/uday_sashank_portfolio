@@ -1,0 +1,37 @@
+project:
+  type: website
+
+website:
+  title: "Uday Sashank Kanapala"
+  favicon: "images/uday.jpg"
+  page-footer:
+    center: |
+      [Contact Uday Sashank Kanapala](mailto:udays. udaysashank999@gmail.com)
+    left: |
+      Made with [Uday Sashank Kanapala](https://quarto.org/)
+    right: |
+      [Github Code Repo](https://github.com/udaysashank)
+    background: "#2780e3"
+    
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: projects.qmd
+        text: Projects
+      - href: resume.qmd
+        text: Resume
+        
+    right:
+      - icon: github
+        href: https://github.com/
+      - icon: twitter
+        href: https://twitter.com
+format:
+  html:
+    theme:
+      light: lux
+      dark: [quartz, theme_dark_custom.scss]
+    highlight-style: github
+editor: visual
+

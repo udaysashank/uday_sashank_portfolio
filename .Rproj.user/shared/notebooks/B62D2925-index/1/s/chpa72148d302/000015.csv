@@ -1,0 +1,8 @@
+"0",""
+"0","ggplot(NFLX4, aes(x = YEAR, y = size, fill = YEAR)) +"
+"0","  geom_boxplot() +"
+"0","  ggtitle(""Size Distribution Across Years"") +"
+"0","  xlab(""Year"") +"
+"0","  ylab(""Size"") +"
+"0","  scale_fill_manual(values = custom_colors) +  # Apply custom colors"
+"0","  theme_minimal()"

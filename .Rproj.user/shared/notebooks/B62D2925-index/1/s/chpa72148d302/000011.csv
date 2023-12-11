@@ -1,0 +1,8 @@
+"0",""
+"0","ggplot(NFLX4, aes(x = YEAR, y = experience, fill = YEAR)) +"
+"0","  geom_boxplot() +"
+"0","  ggtitle(""Experience Distribution Across Years"") +"
+"0","  xlab(""Year"") +"
+"0","  ylab(""Experience"") +"
+"0","  scale_fill_manual(values = custom_colors) +  # Apply custom colors"
+"0","  theme_minimal()"
